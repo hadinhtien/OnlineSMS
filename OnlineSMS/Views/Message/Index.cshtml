@@ -1,0 +1,78 @@
+﻿@model IEnumerable<OnlineSMS.Models.DataModels.Account>
+@{
+    ViewData["Title"] = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+<section class="discussions">
+    <div class="discussion search">
+        <div class="searchbar">
+            <form>
+                <input type="text" name="name" placeholder="Search..."></input>
+                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </form>
+        </div>
+    </div>
+    <div class="okok" style="background:#fff">
+        @foreach (var item in Model)
+        {
+        <a asp-controller="Message" asp-action="Index" asp-route-toAccount="@item.AccId">
+            <div class="discussion">
+
+                <div class="photo" style="background-image: url(http://e0.365dm.com/16/08/16-9/20/theirry-henry-sky-sports-pundit_3766131.jpg?20161212144602);">
+                    <div class="online"></div>
+                </div>
+                <div class="desc-contact">
+                    <p class="name">@item.FullName</p>
+                    @*<p class="message">Let's meet for a coffee or something today ?</p>*@
+                </div>
+                @*<div class="timer">3 min</div>*@
+            </div>
+        </a>
+        }
+    </div>
+</section>
+<section class="chat">
+    @if (ViewBag.check != 0)
+    {
+    <div class="header-chat">
+        <i class="icon fa fa-user-o" aria-hidden="true"></i>
+        <p class="name">@ViewBag.toacc</p>
+        <i class="icon clickable fa fa-ellipsis-h right" aria-hidden="true"></i>
+    </div>
+    <div class="messages-chat">
+
+        @foreach (var item in @ViewBag.message)
+        {
+            if (item.ToAccId == @ViewBag.acc)
+            {
+                <div class="message">
+                    <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
+                        <div class="online"></div>
+                    </div>
+                    <p class="text"> @item.Content </p>
+                </div>
+                <p class="time"> 14h58</p>
+            }
+            else
+            {
+            <div class="message text-only">
+                <div class="response">
+                    <p class="text"> @item.Content</p>
+                </div>
+            </div>
+            }
+        }
+
+
+    </div>
+    <div class="footer-chat">
+        <form asp-controller="Message" asp-action="CreateMessage" method="post">
+            <i class="icon fa fa-smile-o clickable" style="font-size:25pt;" aria-hidden="true"></i>
+            <input type="text" class="write-message" name="content" placeholder="Type your message here"></input>
+            <input type="hidden" name="toAccId" value="@ViewBag.toaccid" />
+            <button type="submit"><i class="icon send fa fa-paper-plane-o clickable" aria-hidden="true"></i></button>            
+        </form>
+    </div>
+    }
+</section>

@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - Material Messaging App Concept</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+    <!-- partial:index.partial.html -->
+    <body>
+        <div class="container">
+            <div class="row">
+                <nav class="menu">
+                    <ul class="items">
+                        <li class="item">
+                            <a asp-controller="Home" asp-action="Index">
+                                <i class="fa fa-home" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="item">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </li>
+                        <a asp-controller="Message" asp-action="Index">
+                            <li class="item ">
+
+                                <i class="fa fa-commenting" aria-hidden="true"></i>
+
+                            </li>
+                        </a>
+                        <a asp-controller="Account" asp-action="Signout">
+                            <li class="item">
+                                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                            </li>
+                        </a>
+                    </ul>
+                </nav>
+                @RenderBody()
+
+            </div>
+        </div>
+
+
+    </body>
+    <!-- partial -->
+    <script src="~/js/script.js"></script>
+
+</body>
+</html>
